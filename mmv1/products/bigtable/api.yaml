@@ -190,3 +190,24 @@ objects:
           - :RESIZING
           - :DISABLED
           output: true
+        - !ruby/object:Api::Type::NestedObject
+          name: clusterConfig
+          description: 'Autoscaling configuration for this cluster.'
+          properties:
+          - !ruby/object:Api::Type::NestedObject
+            name: 'autoscalingLimits'
+            description: 'Autoscaling limits for this cluster.'
+            properties:
+            - !ruby/object:Api::Type::Integer
+              name: 'minServeNodes'
+              description: 'Required. Minimum number of nodes to scale down to.'
+            - !ruby/object:Api::Type::Integer
+              name: 'maxServeNodes'
+              description: 'Required. Maximum number of nodes to scale up to.'
+          - !ruby/object:Api::Type::NestedObject
+            name: 'autoscalingTargets'
+            description: 'Required. Autoscaling targets for this cluster.'
+            properties:
+            - !ruby/object:Api::Type::Integer
+              name: 'cpuUtilizationPercent'
+              description: 'The cpu utilization that the Autoscaler should be trying to achieve. This number is on a scale from 0 (no utilization) to 100 (total utilization).'
